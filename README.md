@@ -14,7 +14,6 @@
 - 🐍 **Python 3.12**
 - 🐬 **MySQL** (banco de dados relacional)
 - 🔌 **PyMySQL** (conector Python-MySQL)
-- 🛠️ DBeaver (opcional para modelagem e administração do banco)
 
 
 ## 📌 Melhorias Futuras
@@ -23,6 +22,7 @@
 * [ ] Criação de relatórios de empréstimos
 * [ ] Validações de entrada e tratamento de exceções
 * [ ] Autenticação de usuários
+* [ ] 🛠️ DBeaver (opcional para modelagem e administração do banco)
 
 ## 👨‍💻 Desenvolvedor
 
