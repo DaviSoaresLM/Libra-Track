@@ -1,0 +1,1 @@
+# Remoção de dados do banco de dados
