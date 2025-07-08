@@ -1,24 +1,28 @@
+# -*- coding: utf-8 -*-
+
+import psycopg2
 from lib.db import get_connection
 
 
-# Criação do banco
 def criar_banco():
     conn = get_connection()
     if conn:
         try:
             cursor = conn.cursor()
-            cursor.execute("CREATE DATABASE IF NOT EXISTS LibraTrack")
-            cursor.execute("USE LibraTrack")
-            conn.commit()
-            print("Banco de dados criado/verificado com sucesso!")
+            cursor.execute("SELECT 1 FROM pg_database WHERE datname = 'libratrack'")
+            exists = cursor.fetchone()
+
+            if not exists:
+                cursor.execute('CREATE DATABASE "LibraTrack"')
+                print("Banco de dados 'LibraTrack' criado com sucesso!")
+            else:
+                print("Banco de dados 'LibraTrack' ja existe.")
         except Exception as e:
-            print(f"Erro ao criar banco: {e}")
+            print(f"Erro ao criar o banco de dados: {e}")
         finally:
             conn.close()
     else:
-        print("Conexão falhou. Banco não foi criado.")
+        print("Falha ao conectar. Banco nao foi criado.")
 
-
-# Chamada p/ verificação do comando
 if __name__ == "__main__":
     criar_banco()
