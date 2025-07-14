@@ -1,4 +1,5 @@
 # Inserir dados no banco de dados PostgreSQL
+
 import psycopg2
 from lib.db import get_connection
 conn = get_connection()
@@ -20,5 +21,21 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS editora(
                   cnpj VARCHAR(50),
                   telefone VARCHAR(50));''')
 
+# Criação da Tabela de Livros
+cursor.execute('''CREATE TABLE IF NOT EXISTS livros(
+                  id_livro SERIAL PRIMARY KEY,
+                  nome VARCHAR(50),
+                  isbn VARCHAR(17),
+                  genero VARCHAR(50),
+                  paginas INT NOT NULL,
+                  edicao INT NOT NULL);''')
+
+# Criação da Tabela de Empréstimos
+cursor.execute('''CREATE TABLE IF NOT EXISTS emprestimos(
+                  id SERIAL PRIMARY KEY,
+                  data_emprestimo DATE,
+                  data_inicial DATE,
+                  data_final DATE,    
+                  multa DECIMAL(10,2));''')
 conn.commit()
 conn.close()
